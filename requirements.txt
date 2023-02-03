@@ -3,4 +3,4 @@ langchain
 openai
 streamlit
 streamlit-chat
-sentence_transformers 
+sentence-transformers 
