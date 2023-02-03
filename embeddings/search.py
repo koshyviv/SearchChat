@@ -16,20 +16,23 @@ EMBEDDING_MODEL = "sentence-transformers/gtr-t5-large"
 INDEX_FILE = "index.pkl"
 MAPPING_FILE = "mappings.pkl"
 DOCUMENTS_FILE = "documents.pkl"
-TOP_K = 10
+TOP_K = 3
 
-ENVIRONMENT="EAST_AZURE_OPENAI"
-openai.api_base = os.environ[f"{ENVIRONMENT}_ENDPOINT"]
-openai.api_type = "azure"
-openai.api_version = "2022-12-01"
-DEPLOYMENT_ID = os.environ[f"{ENVIRONMENT}_DEPLOYMENT"]
 
-llm = AzureOpenAI(deployment_name=DEPLOYMENT_ID, 
-    openai_api_key=os.environ[f"{ENVIRONMENT}_API_KEY"],
-    model_name="text-davinci-003", temperature=0)
+openai.api_key = os.environ["OPENAI_API_KEY"]
+
 
 def evaluate_prompt(prompt: str) -> str:
-    return llm(prompt)
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        temperature=0,
+        max_tokens=2048,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+    )
+    return response['choices'][0]['text']
 
 template = PromptTemplate(
     input_variables=["user_question", "context"],
