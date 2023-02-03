@@ -20,7 +20,6 @@ TOP_K = 3
 
 openai.api_key = os.environ["open_api_key"]
 
-
 def evaluate_prompt(prompt: str) -> str:
     response = openai.Completion.create(
         engine="text-davinci-003",
