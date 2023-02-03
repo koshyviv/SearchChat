@@ -9,8 +9,8 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain import FAISS
 
 """
-## Deep Questions
-(with apologies to Cal Newport)"""
+## Koshy Questions
+"""
 
 EMBEDDING_MODEL = "sentence-transformers/gtr-t5-large"
 INDEX_FILE = "index.pkl"
@@ -18,8 +18,7 @@ MAPPING_FILE = "mappings.pkl"
 DOCUMENTS_FILE = "documents.pkl"
 TOP_K = 3
 
-
-openai.api_key = os.environ["OPENAI_API_KEY"]
+openai.api_key = os.environ["open_api_key"]
 
 
 def evaluate_prompt(prompt: str) -> str:
@@ -79,3 +78,31 @@ if query:
         response = evaluate_prompt(prompt)
     
     st.write(response)
+
+
+# import streamlit as st
+# from streamlit_chat import message
+
+# """
+# ## Text Is All You Need
+
+# A contrarian take on the user interface of the future. 
+# """
+
+# if "generated" not in st.session_state:
+#     st.session_state.generated = []
+#     st.session_state.past = []
+
+# user_input = st.text_input("You", 
+#     placeholder="Ask me about Kunnumpurathu Family", key="input")
+
+# if user_input:
+#     response = f"I'm sorry. I'm afraid I can't do that: {user_input}" 
+#     st.session_state.past.append(user_input)
+#     st.session_state.generated.append(response)
+
+# if len(st.session_state.generated) > 0:
+#     for i in range(len(st.session_state.generated) - 1, -1, -1):
+#         message(st.session_state.generated[i], key=str(i))
+#         message(st.session_state.past[i], is_user=True, 
+#             avatar_style="jdenticon", key=f"{i}_user")
