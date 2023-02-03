@@ -1,3 +1,3 @@
-# Text Is All You Need
+# Search and Chat
 
-Doubling down on chat as the universal interface.
+Testing Stage. Currently only for http://kunnumpurathu.com/index.html
