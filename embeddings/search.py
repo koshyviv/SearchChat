@@ -13,9 +13,9 @@ from langchain import FAISS
 """
 
 EMBEDDING_MODEL = "sentence-transformers/gtr-t5-large"
-INDEX_FILE = "index.pkl"
-MAPPING_FILE = "mappings.pkl"
-DOCUMENTS_FILE = "documents.pkl"
+INDEX_FILE = "embeddings/index.pkl"
+MAPPING_FILE = "embeddings/mappings.pkl"
+DOCUMENTS_FILE = "embeddings/documents.pkl"
 TOP_K = 3
 
 openai.api_key = os.environ["open_api_key"]
