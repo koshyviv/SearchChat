@@ -12,10 +12,10 @@ if "generated" not in st.session_state:
     st.session_state.past = []
 
 user_input = st.text_input("You", 
-    placeholder="Talk to your AI overlords", key="input")
+    placeholder="Ask me about Kunnumpurathu Family", key="input")
 
 if user_input:
-    response = f"I'm sorry, Dave. I'm afraid I can't do that: {user_input}" 
+    response = f"I'm sorry. I'm afraid I can't do that: {user_input}" 
     st.session_state.past.append(user_input)
     st.session_state.generated.append(response)
 

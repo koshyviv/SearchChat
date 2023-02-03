@@ -11,7 +11,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 
 EMBEDDING_MODEL = "sentence-transformers/gtr-t5-large"
-INPUT_FILE = "avg.txt"
+INPUT_FILE = "koshy.txt"
 INDEX_FILE = "index.pkl"
 MAPPING_FILE = "mappings.pkl"
 DOCUMENTS_FILE = "documents.pkl"
