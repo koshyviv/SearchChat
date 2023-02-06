@@ -1,7 +1,7 @@
 import pickle
 import time
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings, OpenAIEmbeddings
 from langchain import FAISS
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -11,10 +11,11 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 
 EMBEDDING_MODEL = "sentence-transformers/gtr-t5-large"
-INPUT_FILE = "koshy.txt"
-INDEX_FILE = "index.pkl"
-MAPPING_FILE = "mappings.pkl"
-DOCUMENTS_FILE = "documents.pkl"
+# EMBEDDING_MODEL = "text-embedding-ada-002"
+INPUT_FILE = "ebooks/consolidated_text_ebooks.txt"
+INDEX_FILE = "ebooks/index.pkl"
+MAPPING_FILE = "ebooks/mappings.pkl"
+DOCUMENTS_FILE = "ebooks/documents.pkl"
 
 print(f"Loading {INPUT_FILE}...")
 with open(INPUT_FILE) as f:

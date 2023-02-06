@@ -8,23 +8,28 @@ from langchain.llms import AzureOpenAI
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain import FAISS
 
-"""
-## Koshy Questions
-"""
+# Render Streamlit page
+st.title("Edge Thoughts")
+st.markdown(
+    "This mini-app generates answers using OpenAI's GPT-3 based [Davinci model](https://beta.openai.com/docs/models/overview). Embedding have been pre-generated using sentence-transformers/gtr-t5-large, based on Edge content from Grtner and youtube videos from the past year."
+)
+
+folder = "ebooks"
 
 EMBEDDING_MODEL = "sentence-transformers/gtr-t5-large"
-INDEX_FILE = "embeddings/index.pkl"
-MAPPING_FILE = "embeddings/mappings.pkl"
-DOCUMENTS_FILE = "embeddings/documents.pkl"
-TOP_K = 3
+INDEX_FILE = f"./{folder}/index.pkl"
+MAPPING_FILE = f"./{folder}/mappings.pkl"
+DOCUMENTS_FILE = f"./{folder}/documents.pkl"
+TOP_K = 12
 
-openai.api_key = os.environ["open_api_key"]
+# openai.api_key = os.environ["open_api_key"]
+openai.api_key ="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"
 
 def evaluate_prompt(prompt: str) -> str:
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
-        temperature=0,
+        temperature=0.2,
         max_tokens=2048,
         top_p=1,
         frequency_penalty=0,
